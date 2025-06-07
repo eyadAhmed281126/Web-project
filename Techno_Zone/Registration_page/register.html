@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="register.css">
+    <link rel="Techno-Zone Icon" href="Techno_Zone_ICON.svg">
+    <title>Techno-Zone | Registration</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="container-img"> </div>
+        <div class="text">
+            create your<br> account
+        </div>
+        <p class="text1">join <span>techno-zone</span> today <br> and never miss amazing offers</p>
+        <div class="container-form">
+            <form id="registration-form" method="post">
+                <h1>Register</h1>
+                <div>
+                    <div class="info">
+                        <i class='far fa-user-circle'></i>
+                        <input type="text" name="fname" placeholder="First name" id="first-name" class="INPUT" autofocus>
+                    </div>
+                    <div class="info">
+                        <i class='fas fa-user-circle'></i>
+                        <input type="text" name="lname" placeholder="Last name" id="last-name" class="INPUT">
+                    </div>
+                    <div class="info">
+                        <i class='fas fa-mail-bulk'></i>
+                        <input type="text" name="mail" placeholder="Email address" id="email" class="INPUT">
+                    </div>
+                    <div class="info">
+                        <i class='fas fa-lock'></i>
+                        <input type="password" name="Pass" placeholder="Password" id="pass" class="INPUT">
+                    </div>
+                    <div class="info">
+                        <i class='fas fa-user-lock'></i>
+                        <input type="password" name="ConfirmPass" placeholder="Confirm password" id="confirm-pass" class="INPUT">
+                    </div>
+                    <div class="info">
+                        <i class='fas fa-phone'></i>
+                        <input type="tel" name="Phone" placeholder="Phone number" id="phone" class="INPUT">
+                    </div>
+                    <div class="info-radio">
+                        <i class='fas fa-male'></i>
+                        <input type="radio" id="male" name="gender" value="male" checked>
+                        <label class="GENDER" for="male">Male</label>
+
+                        <i class='fas fa-female'></i>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label class="GENDER" for="female">Female</label>
+                    </div>
+
+                </div>
+                <button type="submit" id="registerBtn">register</button>
+                <p class="text2">Already have an account? <a href="#" onclick="showlogin()">login</a></p>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script>
+        function showlogin() {
+            window.location.href = "../login_page/login.html";
+
+        }
+        document.getElementById("registration-form").addEventListener("submit", function (e) {
+            e.preventDefault(); // يمنع الإرسال مؤقتًا
+
+            const firstName = document.getElementById("first-name").value.trim();
+            const lastName = document.getElementById("last-name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("pass").value;
+            const confirmPass = document.getElementById("confirm-pass").value;
+            const phone = document.getElementById("phone").value.trim();
+            const button = document.getElementById("registerBtn");
+
+            if (firstName === "") {
+                alert("Please enter your first name.");
+                return;
+            }
+
+            if (lastName === "") {
+                alert("Please enter your last name.");
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasLowerCase = /[a-z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+
+            if (
+                password.length < 8 ||
+                !hasUpperCase ||
+                !hasLowerCase ||
+                !hasNumber
+            ) {
+                alert("Your password is too weak. Please include at least 8 characters, with uppercase, lowercase and numbers.");
+                return;
+            }
+
+            if (password !== confirmPass) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            const phoneRegex = /^01[0-9]{9}$/;
+            if (!phoneRegex.test(phone)) {
+                alert("Please enter a valid 11-digit Egyptian phone number.");
+                return;
+            }
+
+            // لو كل حاجة تمام
+            button.innerText = "Done";
+            alert("Registration successful!");
+            window.location.href = "../Home Page/Home Page.html";
+        });
+
+    </script>
+</body>
+
+</html>

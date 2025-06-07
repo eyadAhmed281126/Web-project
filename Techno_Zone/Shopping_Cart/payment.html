@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techno-Zone | Shopping Cart</title>
+    <meta name="Author" content="Ahmed A. Ramdan">
+    <meta name="Content" content="TechnoZone Checkout page">
+    <link rel="stylesheet" href="payment/style.css" /> 
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"/>
+    <!---Webpage Icon--->
+    <link rel="Techno_Zone ICON" href="../PC_Cases/Images/Techno_Zone ICON.svg">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="background"></div>
+    </div>
+    <div class="checkout-wrapper">
+      <div class="payment-wrapper">
+        <h2 class="payment-header">Payment Details</h2>
+        <div class="in-area-row">
+          <div class="in-area-row-column">
+            <i class="bx bx-user bx-sm" id="ic"></i>
+            <input type="text" id="b-name" placeholder="Name" required />
+          </div>
+          <div class="in-area-row-column">
+            <i class="bx bx-envelope bx-sm" id="ic"></i>
+            <input
+              type="email"
+              id="email-ad"
+              placeholder="Email address"
+              required
+            />
+          </div>
+        </div>
+        <div class="in-area">
+          <div class="in-area-row-column">
+            <i class="bx bx-phone bx-sm" id="ic"></i>
+            <input
+            type="tel"
+            id="phone-num"
+            placeholder="Phone number (10 digits)"
+            required
+            pattern="[0-9]{10}" 
+            title="Please enter exactly 10 digits for the phone number."
+            maxlength="10"
+         />
+          </div>
+        </div>
+        <div class="in-area">
+          <div class="in-area-row-column">
+            <i class="bx bx-home-smile bx-sm" id="ic"></i>
+            <input type="text" id="delivery-address" placeholder="Delivery Address" required />
+          </div>
+        </div>
+        <fieldset>
+          <legend>Card Details</legend>
+          <div class="card-details">
+            <input 
+              type="text" 
+              id="card-name" 
+              placeholder="Name On Card" 
+              required 
+              title="Please enter the name as it appears on your card." 
+            />
+            <input 
+            style="text-align: center;"
+              type="text" 
+              id="card-number" 
+              placeholder="Card number (e.g., 1111 2222 3333 4444)" 
+              required 
+              pattern="[0-9 ]{16,19}" 
+              title="Please enter a valid 16-digit card number. Spaces will be added automatically." 
+              maxlength="19" 
+            />
+
+            <div class="mm-yy-cvv-row">
+              <input 
+                type="text" 
+                id="card-expiry" 
+                placeholder="MM/YY" 
+                required 
+                pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" 
+                title="Please enter the expiry date as MM/YY (e.g., 03/28)." 
+                maxlength="5" 
+              />
+              <input 
+                type="text" 
+                id="card-cvv" 
+                placeholder="CVV" 
+                required 
+                pattern="[0-9]{3,4}" 
+                title="Please enter the 3 or 4 digit CVV found on the back of your card (or front for Amex)." 
+                maxlength="4" 
+              />
+            </div>
+          </div>
+        </fieldset>
+        <p id="payment-error-message" class="payment-error" style="display: none;"></p>
+        <button type="submit" class="pay-btn" style="margin-top: 10px">
+          Pay
+        </button>
+        <p class="secure">
+          Payments are processed securely using end-to-end encryption protocols
+        </p>
+        <i class="fa-solid fa-shield-halved fa-beat" id="shield-icon"></i>
+
+      </div>
+
+      <div class="cart-wrapper">
+        <h2 class="cart-wrapper-header">Cart</h2>
+
+        <div class="cart-items-list-container">
+          <!-- Cart items will be  inserted here   -->
+        </div>
+        
+
+        <!-- Total Section -->
+      
+        </div>
+        <div class="total-section">
+          
+          <div class="total-row">
+            <span>Subtotal:</span>
+            <span class="subtotal-amount">0 EGP</span>
+          </div>
+          <div class="total-row">
+            <span>Tax (12%):</span>
+            <span class="tax-amount">0 EGP</span>
+          </div>
+          <div class="total-row">
+            <span>Total:</span>
+            <span class="total-amount">0 EGP</span>
+          </div>
+          <div class="removeall-return-row"
+          style="display: flex;justify-content: center; gap: 4.5px;"
+          >
+            <button class="remove-all-btn">Remove all items</button>
+            <button class="return-btn">Return Back</button>
+          </div>
+         
+        </div>
+     
+    </div>
+    <script src="payment/script.js"></script>
+    <script src="https://kit.fontawesome.com/f34faf404d.js" crossorigin="anonymous"></script> <!-- icons2 -->
+  </body>
+</html>
