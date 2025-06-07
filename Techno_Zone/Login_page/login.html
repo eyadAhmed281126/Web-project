@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="Techno-Zone Icon" href="Techno_Zone_ICON.svg">
+    <title>Techno-Zone | login</title>
+</head>
+
+<body>
+
+    <form method="post">
+        <h1>Login</h1>
+        <h2 class="welcome" id="welcomemessage">Welcome back, <br> glad to see you again </h2>
+        <div class="user">
+            <input type="text" placeholder="username or email" name="Username">
+        </div>
+        <div class="pass">
+            <input id="passfield" type="password" placeholder="password" name="Pass">
+            <i class="fa-solid fa-eye toggle-icon" id="toggleicon" onclick="togglepass()"></i>
+        </div>
+        <div class="box">
+            <input id="remember" type="checkbox">
+            <label for="remember">Remember me</label>
+        </div>
+        <div class="forgot-pass">
+            <a href="#">Forgotten password?</a>
+        </div>
+        <button type="submit">login</button>
+        <p>Don't have an account? <a href="#" onclick="showRegister()">register</a></p>
+    </form>
+    <script>
+        function togglepass() {
+            var passinput = document.getElementById("passfield");
+            var icon = document.getElementById("toggleicon");
+            if (passinput.type === "password") {
+                passinput.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            }
+            else {
+                passinput.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+        function showRegister() {
+            window.location.href = "../registration_page/register.html";
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            const text = document.getElementById('welcomemessage');
+            setTimeout(() => {
+                text.classList.add("show");
+            }, 500);
+        });
+        document.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault(); // تمنع الإرسال دايمًا في البداية
+
+            const username = document.querySelector(".user input").value.trim();
+            const password = document.querySelector(".pass input").value;
+
+            const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+
+            if (username === "" || password === "") {
+                alert("All fields are required. Please complete the form.");
+                return;
+            }
+
+            if (username.includes("@") && !emailRegex.test(username)) {
+                alert("Invalid email format, Please enter a valid email address.");
+                return;
+            }
+
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters.");
+                return;
+            }
+
+            alert("Login successful!");
+            window.location.href = "../Home Page/Home Page.html";
+        });
+    </script>
+</body>
+
+</html>

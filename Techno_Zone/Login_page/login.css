@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(download.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+
+form {
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 40%;
+    height: 500px;
+    text-align: center;
+    margin: 90px auto;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 5px #4e6683;
+}
+
+div {
+    padding: 12px;
+}
+
+h1 {
+    padding: 20px 0 10px 0;
+    text-align: center;
+    color: #080808;
+    font-size: 2.5em;
+    font-style: italic;
+    text-shadow: 2px 2px rgb(52, 61, 66);
+}
+
+.welcome {
+    opacity: 0;
+    color: #080808;
+    text-shadow: 2px 2px 10px rgb(84, 97, 104);
+    transform: translateY(20px);
+    transition: opacity 1.5s ease, transform 1.2s ease;
+}
+
+.welcome.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.user input,
+.pass input {
+    border: 1px solid #000;
+    border-radius: 13px;
+    padding: 5px;
+    font-size: medium;
+    width: 80%;
+    transition: 0.3s ease-in-out;
+}
+
+.forgot-pass,
+.box {
+    padding: 2px;
+    display: inline;
+    font-size: smaller;
+}
+
+.pass {
+    position: relative;
+}
+
+.pass i {
+    position: absolute;
+    top: 50%;
+    right: 70px;
+    transform: translateY(-50%);
+    font-size: small;
+}
+
+
+.forgot-pass a,
+label {
+    color: #080808;
+    font-size: 13px;
+}
+
+.forgot-pass a {
+    text-decoration: none;
+}
+
+.forgot-pass a:hover {
+    text-decoration: underline;
+}
+
+button {
+    position: relative;
+    overflow: hidden;
+    margin: 35px auto 30px auto;
+    padding: 4px;
+    width: 75%;
+    border-radius: 15px;
+    color: #080808;
+    font-weight: bold;
+    font-style: italic;
+    font-size: medium;
+    transition: transform 0.9s ease, box-shadow 1.2s ease, background-color 0.3s ease;
+}
+
+p,
+a {
+    margin: 0;
+    color: #080808;
+    font-weight: bold;
+}
+
+
+.user input:hover,
+.pass input:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.5);
+}
+
+
+button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 1.6s ease;
+}
+
+button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px 4px #001233;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+button:hover::after {
+    left: 120%;
+}
