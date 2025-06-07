@@ -1,0 +1,438 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family:"Karla", sans-serif;
+}
+
+body {
+  background-color: #001845; 
+  color: #E0E0E0; 
+  animation: fadeIn 0.5s ease-in;
+  
+}
+@keyframes fadeIn {
+  from { opacity: 0.5; }
+  to { opacity: 1; } 
+}
+
+/*--------------------Header Styling-----------------*/
+header{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/*--------Navigation Bar Styling----------*/
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000a1e;
+}
+
+/*-------Our Logo Styling-------*/
+.LOGO{
+  height: 5rem;
+  transform: translateY(0.07rem);
+}
+
+/*------All Links Styling------*/
+.Navlinks {
+  display: flex;
+  align-items: center;
+}
+nav a {
+  font-weight:600;
+  font-size: 17px;  
+  color: #0088ff;
+  text-align: center;
+  padding: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/*--------Categories btn & Dropdown Menu Styling-------*/
+.dropbtn{
+font-weight:600;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.dropdown {
+  overflow: hidden;
+}
+.dropdown .dropbtn {
+font-size: 17px;  
+border: none;
+outline: none;
+color: #0088ff;
+padding: 30px;
+background-color: transparent;
+}
+
+/*-------Navigation Links Hover Styling------*/
+nav a:hover, .dropdown:hover .dropbtn {
+  background-color: rgba(100, 180, 255, 0.1);
+  color: #e0f0ff;
+}
+
+/*-------Dropdown Menu Styling-----*/
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #001a3ad0;
+  z-index: 999;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+.dropdown-content a {
+  color: #e0f0ff;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  width: 182px;
+  padding: 20px 20px;
+}
+.dropdown-content a:hover {
+  background-color: rgba(100, 180, 255, 0.2);
+  color: #ffffff;
+  padding-left: 23.9px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*-------------Add Animation to dropdown-----------*/
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.dropdown-content {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* ====== IMPROVED TITLE SECTION ====== */
+.title {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, #000a1e, #001845);
+
+}
+
+.title-contents h1 {
+  font-size: 2.8rem;
+  color: #0088ff;
+  margin: 2rem 0;
+  text-shadow: 0 2px 10px rgba(0, 136, 255, 0.3);
+
+}
+
+.GIF {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border: 2px solid #0076c0;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 120, 255, 0.4);
+  margin: 0 auto 3rem;
+}
+
+/* ====== IMPROVED MONITOR HEADER ====== */
+.monitor-header {
+  text-align: center;
+  padding: 40px 2px;
+  background: linear-gradient(to bottom, #001845, #000a1e);
+  position: relative;
+  
+}
+
+.monitor-header h1 {
+  font-size: 5rem;
+  color: #0088ff;
+  margin-bottom: 15px;
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #0076c0;
+  
+}
+
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #b3d6ff;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ====== MONITOR GRID (UNCHANGED) ====== */
+section {
+  background: linear-gradient(to bottom, #000a1e, #023e7d,#001845);
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+.product-card {
+  max-width: fit-content;
+  max-height: fit-content;
+  background-color: #2d2c2d;
+  border: 2px solid #ececec;
+  border-radius: 10px;
+  margin: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #056aa9;
+  overflow: hidden;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.product-card:hover {
+  background-color: #0088ff;
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  max-width: 270px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card img:hover {
+  transform: scale(1.05);
+}
+
+.cards-desc { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  border: 2px solid #027cff;
+  border-radius: 15px;
+  background-color: #171718;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.product-name {
+  text-transform: capitalize;
+  font-size: 17px;
+  text-decoration: none;
+  padding: 7px 0;
+  color: #0076c0;
+  transition: color 0.3s ease;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: block;
+}
+
+.product-name:hover {
+  color: rgb(255, 255, 255);
+  white-space: normal;
+  overflow: visible;
+  word-break: break-word;
+}
+
+.cards-desc p {
+  text-transform: capitalize;
+  font-size: 18px;
+  padding: 7px 0;
+  margin: 0;
+  color: #cccccc;
+  text-align: left;
+}
+
+.add-to-cart {
+  font-size: 16px;
+  background-color: #0076c0;
+  color: #121212;
+  border: 2px solid #0080ff;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.add-to-cart:hover {
+  background-color: #0146f5;
+  color: white;
+  border-color: #000000;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: #0069fb;
+  margin: 0;
+}
+
+/*------------------------Footer Styling---------------------*/
+footer{
+  overflow-x: hidden;
+  margin-top: 7rem;
+  background: #292929;
+  background-image: linear-gradient(#023e7d,#000000);
+  padding-top: 50px;
+  width: 100%;
+  position: relative;
+}
+
+/*------------------------Footer Curved BG Styling---------------------*/
+.custom-shape-divider-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top svg {
+  position: relative;
+  display: block;
+  width: calc(136% + 1.3px);
+  height: 150px;
+}
+
+.custom-shape-divider-top .shape-fill {
+  fill: #001845;
+}
+
+/*----------------------Postion of content Styling----------------------*/
+#footercredit {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#footerlinks {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#footercontact {
+  margin-top: 10.45rem;
+}
+
+#footercontact p {
+  padding-left: 1rem;
+}
+
+#footerlogo {
+  height: 8rem;
+  transform: translateX(-16rem);
+  margin-bottom: 2rem;
+  cursor: grab;
+}
+
+/*------------------------Upper Footer Styling-----------------*/
+.footercontainer{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  height: 20rem;
+}
+
+.footer-content{
+  width: 25%;
+}
+
+footer h3{
+  font-size: 28px;
+  color: #0080ff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#footercredit h3{
+  margin-bottom: 0px;
+}
+
+.footer-content p {
+  font-weight: bold;
+  width:205px;
+  margin: auto;
+  padding: 2px;
+  color: rgb(255, 241, 230);
+  text-decoration: none;
+}
+
+.footer-content a {
+  font-weight: bold;
+  width:205px;
+  margin: auto;
+  padding: 2px;
+  color: rgb(255, 241, 230);
+  text-decoration: none;
+}
+
+.footer-content a:hover{
+  color: #0080ff;
+}
+
+.credit li{
+  list-style-type: none;
+  text-align: left;
+  padding-left: 5rem;
+}
+
+.quicklinks li{
+  width: auto;
+  text-align: center;
+  list-style-type:none;
+  padding-bottom: 18px;
+}
+
+.social-icons{
+  justify-content: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.social-icons li{
+  display: inline-block;
+  text-align: center;
+  padding: 5px;
+}
+
+.github a:hover {
+  color: #353535;
+}
+
+.instagram a:hover {
+  color: #d62976;
+}
+
+/*---------------------Lower Footer Styling-----------------*/
+.bottom-bar{
+  background: #0000002a;
+  text-align: center;
+  padding: 7px 0;
+  margin-top: 20px;
+  font-weight: 500;
+}

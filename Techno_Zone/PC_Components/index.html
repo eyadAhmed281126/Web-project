@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techno_Zone | PC Components</title>
+    <!---Webpage Icon--->
+    <link rel="Techno_Zone ICON" href="../PC_Cases/Images/Techno_Zone ICON.svg">
+    <link rel="stylesheet" href="CSS/style.css" />
+    <script src="JavaScript/script.js" defer></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<!----------------------------Navigation Bar------------------------->
+<header>
+  <nav>
+    <!---------------Techno_Zone Logo------------------->
+    <img class="LOGO" src="Final Logo.svg" alt="Techno_Zone Logo">
+    <!--------Navigation Bar Links-------->
+    <div class="Navlinks">    
+      <a href="../Home Page/Home Page.html"><i class="fa-solid fa-house"></i> Home</a>
+      <!-----------Dropdown Content-------->
+        <div    class="dropdown">
+            <!-----------Categories btn-------->
+            <button class="dropbtn"><i class="fa-solid fa-list fa-1x"></i> Categories <i class="fa fa-caret-down"></i></button>          
+            <!-----------Dropdown Menu-------->
+            <div class="dropdown-content">
+              <a href="../Laptop/laptop.html">Laptops</a>
+              <a href="../Consoles/consoles.html">Consoles</a>
+              <a href="../PC_Cases/Pc_Cases.html">PC Cases</a>
+              <a href="../PC-Monitors/PC_Monitors.html">PC Monitors</a>
+              <a href="../PC_Accessories/projet.html">PC Accessories</a>
+              <a href="../PC_Components/index.html">PC Components</a>
+            </div>
+        </div> 
+        <a href="../Shopping_Cart/payment.html"><i class="fa-solid fa-cart-shopping fa-1x"></i> Shopping Cart ( <span id="cart-count" style="display: none;"></span> )</a>
+        <a href="../Reviews_Page/Reviews.html"><i class="fa-solid fa-comments fa-1x"></i> Reviews</a>
+        <a href="../Login_page/login.html"><i class="fa-solid fa-user-plus fa-1x"></i> Login</a>
+        <a href="../About US/about2.html"><i class="fa-solid fa-circle-info fa-1x"></i> About Us</a>
+    </div>    
+  </nav>
+</header>
+
+<body>
+
+<!-- ---------------------- Main Content ------------------------- -->
+<div class="container">
+  <h1>Components</h1>
+
+  <!-- Cart Section -->
+  <div class="cart">
+    <h2>🛒</h2>
+    <ul id="cart-items"></ul>
+    <p id="total-price">Total: 0 EGP</p>
+    <button id="clear-cart">Clear Cart</button>
+  </div>
+
+  <div class="parent">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="inner">
+        <div class="front f1">
+          <img src="PIC/battery.jpg.png" alt="Battery" class="f1">
+          <h3 class="product-name">Battery</h3>
+          <p class="product-price">799 EGP</p>
+        </div>
+        <div class="back">
+          <p>High-capacity rechargeable battery designed for extended use and optimal power delivery.</p>
+        </div>
+      </div>
+      <button class="add-to-cart">Add To Cart</button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="inner">
+        <div class="front f2">
+          <img src="PIC/GPU.jpg.png" alt="GPU" class="f2">
+          <h3 class="product-name">NVIDIA RTX 4060</h3>
+          <p class="product-price">15,999 EGP</p>
+        </div>
+        <div class="back">
+          <p>Powerful GPU with ray tracing and DLSS support for high-performance gaming and creative workloads.</p>
+        </div>
+      </div>
+      <button class="add-to-cart">Add To Cart</button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <div class="inner">
+        <div class="front f3">
+          <img src="PIC/ssd.jpg.png" alt="SSD" class="f3">
+          <h3 class="product-name">Kingston SSD 1TB</h3>
+          <p class="product-price">1,299 EGP</p>
+        </div>
+        <div class="back">
+          <p>Fast 1TB solid-state drive for quick boot times,smooth application performance, and enhanced reliability.</p>
+        </div>
+      </div>
+      <button class="add-to-cart">Add To Cart</button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card">
+      <div class="inner">
+        <div class="front f4">
+          <img src="PIC/motherboard.jpj.png" alt="Motherboard" class="f4">
+          <h3 class="product-name">ASUS Motherboard B550</h3>
+          <p class="product-price">3,599 EGP</p>
+        </div>
+        <div class="back">
+          <p>ASUS B550 motherboard supports AMD Ryzen processors,PCIe 4.0, dual M.2 slots, and advanced cooling for high performance computing.</p>
+        </div>
+      </div>
+      <button class="add-to-cart">Add To Cart</button>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="product-card">
+      <div class="inner">
+        <div class="front f5">
+          <img src="PIC/CPU.jpg.png" alt="CPU" class="f5">
+          <h3 class="product-name">Intel Core i7-14700K</h3>
+          <p class="product-price">24,999 EGP</p>
+        </div>
+        <div class="back">
+          <p>24-thread high-end processor with 20 cores (8P + 12E),5.6 GHz turbo boost, and unlocked multiplier for overclocking.</p>
+        </div>
+      </div>
+      <button class="add-to-cart">Add To Cart</button>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="product-card">
+      <div class="inner">
+        <div class="front f6">
+          <img src="PIC/cooling_system.jpg.png" alt="Cooling System" class="f6">
+          <h3 class="product-name">Liquid Cooling System</h3>
+          <p class="product-price">2,350 EGP</p>
+        </div>
+        <div class="back">
+          <p>Efficient liquid cooling system for maintaining low CPU temperatures during intensive tasks and gaming.</p>
+        </div>
+      </div>
+      <button class="add-to-cart">Add To Cart</button>
+    </div>
+
+    <!-- Product 7 -->
+    <div class="product-card">
+      <div class="inner">
+        <div class="front f7">
+          <img src="PIC/wi-fi_card.jpg.png" alt="wi-fi_card" class="f7">
+          <h3 class="product-name">Wi-Fi Card</h3>
+          <p class="product-price">289 EGP</p>
+        </div>
+        <div class="back">
+          <p>High-speed wireless network card with stable connectivity and easy installation, ideal for desktop upgrades.</p>
+        </div>
+      </div>
+      <button class="add-to-cart">Add To Cart</button>
+    </div>
+
+    <!-- Product 8 -->
+    <div class="product-card">
+      <div class="inner">
+        <div class="front f8">
+          <img src="PIC/BIOS.jpg.png" alt="BIOS" class="product-image">
+          <h3 class="product-name">BIOS Chip</h3>
+          <p class="product-price">450 EGP</p>
+        </div>
+        <div class="back">
+          <p>Essential firmware chip for system startup, hardware initialization, and stable computer operation.</p>
+        </div>
+      </div>
+      <button class="add-to-cart">Add To Cart</button>
+    </div>
+
+    <!-- Product 9 -->
+    <div class="product-card">
+      <div class="inner">
+        <div class="front f9">
+          <img src="PIC/PCle_Sound_Card.jpg.png" alt="PCle_Sound_Card" class="product-image">
+          <h3 class="product-name">PCle Sound Card</h3>
+          <p class="product-price">600 EGP</p>
+        </div>
+        <div class="back">
+          <p>5.1 surround PCIe sound card delivering crystal-clear audio, great for gaming, media, and high-fidelity sound.</p>
+        </div>
+      </div>
+      <button class="add-to-cart">Add To Cart</button>
+    </div>
+  </div>
+</div>
+
+<!----------------------Footer--------------------------->
+<footer>
+  <!----------Footer Curved Background------------------->
+  <div class="custom-shape-divider-top">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+  </div>
+  <!-----------Upper Footer Container----------->
+  <div class="footercontainer">
+      <!----------- 1st Part {Credit}-------->
+      <div id="footercredit" class="footer-content">
+          <h3>Credits</h3>
+          <ul class="credit">
+              <li><p>Eng • Mazen Emad</p></li>
+              <li><p>Eng • Ahmed Ali</p></li>
+              <li><p>Eng • Jana Shebl</p></li>
+              <li><p>Eng • Ahmed Zakaria</p></li>
+              <li><p>Eng • Kholoud Emad</p></li>
+              <li><p>Eng • Hasnaa Elsanosy</p></li>
+              <li><p>Eng • Eyad Ahmed</p></li>
+              <li><p>Eng • Haneen Khaled</p></li>
+              <li><p>Eng • Ahmed Abdalazim</p></li>
+          </ul>
+      </div>
+      <!----------- 2nd Part {Quick Links}-------->
+      <div id="footerlinks" class="footer-content">
+          <h3>Quick Links</h3>
+          <ul class="quicklinks">
+                <li><a href="../Home Page/Home Page.html">Home</a></li>
+                <li><a href="../Reviews_Page/Reviews.html">Reviews</a></li>
+                <li><a href="../About US/about2.html">About US</a></li>
+                <li><a href="../Home Page/Home Page.html">Categories</a></li>
+                <li><a href="../Shopping_Cart/payment.html">Shopping Cart</a></li>
+          </ul>
+      </div>
+      <!----------- 3nd Part {Contact Us}-------->
+      <div id="footercontact" class="footer-content">
+          <h3>Contact Us</h3>
+          <p>Email:techno_zone@exp.com</p>
+          <p>Phone: +02 01111111111</p>
+      </div>
+      <!----------- 4th Part {Social Media}-------->
+      <div id="footerfollow" class="footer-content">
+          <img id="footerlogo" src="Final Logo.svg" alt="Logo">
+          <h3>Follow Us</h3>
+          <ul class="social-icons">
+              <li><a href="https://www.linkedin.com/in/mazen-emad-abdelsattar-96118b342?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin fa-2x fa-fade"></i></a></li>
+              <li class="github"><a  href="https://github.com/MazenEmadAbdelsattar" target="_blank"><i class="fa-brands fa-github fa-2x fa-fade"></i></a></li>
+              <li><a href="https://www.facebook.com/profile.php?id=100052692786291" target="_blank"><i class="fa-brands fa-facebook fa-2x fa-fade"></i></a></li>
+              <li class="instagram"><a href="https://www.instagram.com/iammazenemad" target="_blank"><i class="fa-brands fa-instagram fa-2x fa-fade" ></i></a></li>
+              <li><a href="#" target="_blank"><i class="fa-brands fa-twitter fa-2x fa-fade" ></i></a></li>
+          </ul>
+      </div>
+  </div>
+  <!--------------Lower Footer Container----------->
+  <div class="bottom-bar">
+      <p>&copy; 2025 Techno_Zone &trade;     . All Rights Reserved   &reg; </p>
+      <p>built by Eng • Hasnaa Elsanosy</p>
+  </div>
+</footer>
+
+</html>
