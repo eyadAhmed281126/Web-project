@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Techno_Zone | PC Accessories</title>
+  <link rel="stylesheet" href="project.css" />
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+  <link rel="icon" type="image/png" href="Techno_Zone ICON.svg" />
+</head>
+<body>
+<script>
+  let cartCount = 0;
+
+  function addToCart(event) {
+  cartCount++;
+  document.getElementById('cart-counter').textContent = cartCount;
+
+  const parent = event.target.parentElement;
+
+  if (!parent.querySelector(".added-message")) {
+    const alert = document.createElement("span");
+    alert.textContent = "✅ Added!";
+    alert.style.color = "aqua";
+    alert.style.marginLeft = "10px";
+    alert.classList.add("added-message"); 
+
+    parent.appendChild(alert);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCountElement = document.getElementById("cart-count");
+
+  const updateCartCount = () => {
+    const count = cartItems.length;
+    if (count > 0) {
+      cartCountElement.textContent = count;
+      cartCountElement.style.display = "inline";
+    } else {
+      cartCountElement.style.display = "none";
+    }
+  };
+
+  updateCartCount();
+
+  document.querySelectorAll(".add-to-cart").forEach(button => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".product-card");
+      const name = card.querySelector(".product-name").innerText.trim();
+      const price = card.querySelector(".product-price").innerText.trim();
+      
+      const originalImagePath = card.querySelector(".product-image").getAttribute("src");
+      const image = originalImagePath.startsWith("laptop/") ? originalImagePath : `laptop/${originalImagePath}`;
+
+      const product = { name, price, image };
+      cartItems.push(product);
+
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+
+      updateCartCount(); 
+
+      alert(`${name} added to cart!`);
+    });
+  });
+});
+
+function setupSpecialOfferTimer() {
+  const offerTitle = document.querySelector('.main');
+  const timer = document.createElement('div');
+  timer.className = 'offer-timer';
+
+  // Offer ends in 10 seconds from now
+  const endDate = new Date();
+  endDate.setSeconds(endDate.getSeconds() + 10);
+
+  let pricesUpdated = false; // Flag to track if we've already updated prices
+
+function updateTimer() {
+  const now = new Date();
+  const diff = endDate - now;
+
+  if (diff <= 0) {
+    timer.textContent = '⏰ The offer has ended!';
+    
+    // Only update prices once
+    if (!pricesUpdated) {
+      document.querySelectorAll('.price').forEach(priceElement => {
+        const currentPrice = parseInt(priceElement.textContent.replace(' EGP', '').replace(',', ''));
+        const newPrice = currentPrice + 500;
+        priceElement.textContent = `${newPrice} EGP`;
+      });
+      pricesUpdated = true; // Mark as updated
+    }
+    return;
+  }
+
+  // Countdown display
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  timer.textContent = `Hurry up! Offer ends in: ${minutes}m ${seconds}s`;
+}
+
+  offerTitle.appendChild(timer);
+  updateTimer();
+  setInterval(updateTimer, 1000);
+}
+
+document.addEventListener("DOMContentLoaded", setupSpecialOfferTimer);
+
+// Shopping Cart JS
+document.addEventListener("DOMContentLoaded", () => {
+  let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCountElement = document.getElementById("cart-counter");
+
+  //  SUM of Quantities in Cart {to make multiple product increase its count and not added again}
+  const updateCartCount = () => {
+    const totalItems = cartItems.reduce((total, item) => {
+      return total + (item.quantity || 1); // Handles missing quantity
+    }, 0);
+    if (cartCountElement) {
+      if (totalItems > 0) {
+        cartCountElement.textContent = totalItems;
+        cartCountElement.style.display = "inline";
+      } else {
+        cartCountElement.style.display = "none";
+      }
+    }
+  };
+  // Initialize Cart Count
+  updateCartCount();
+
+  document.querySelectorAll(".cart").forEach(button => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".product");
+      const name = card.querySelector(".name").innerText.trim();
+      const price = card.querySelector(".price").innerText.trim();
+      // Check if product exists
+      const existingIndex = cartItems.findIndex(item => item.name === name);
+      if (existingIndex !== -1) {
+        // Product exists → increment quantity
+        cartItems[existingIndex].quantity = (cartItems[existingIndex].quantity || 1) + 1;
+      } else {
+        // New product → add with quantity 1
+        cartItems.push({ name, price, quantity: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      updateCartCount(); // updates count
+    });
+  });
+});
+
+
+</script>
+
+
+
+<section class="welcome">
+  <div class="welcome-content">
+    <h1>🎮 Welcome to Techno_Zone</h1>
+    <p>Discover top-quality computer accessories to enhance your performance and tech experience 🔥</p>
+    <!-- <a href="#home" class="welcome-btn">Shop Now</a> -->
+  </div>
+</section>
+
+<!----------------------------Navigation Bar------------------------->
+<header>
+  <nav>
+    <!---------------Techno_Zone Logo------------------->
+    <img class="LOGO" src="Final Logo.svg" alt="Techno_Zone Logo">
+    <!--------Navigation Bar Links-------->
+    <div class="Navlinks">    
+      <a href="../Home Page/Home Page.html"><i class="fa-solid fa-house"></i> Home</a>
+      <!-----------Dropdown Content-------->
+        <div    class="dropdown">
+            <!-----------Categories btn-------->
+            <button class="dropbtn"><i class="fa-solid fa-list fa-1x"></i> Categories <i class="fa fa-caret-down"></i></button>          
+            <!-----------Dropdown Menu-------->
+            <div class="dropdown-content">
+              <a href="../Laptop/laptop.html">Laptops</a>
+              <a href="../Consoles/consoles.html">Consoles</a>
+              <a href="../PC_Cases/Pc_Cases.html">PC Cases</a>
+              <a href="../PC-Monitors/PC_Monitors.html">PC Monitors</a>
+              <a href="../PC_Accessories/projet.html">PC Accessories</a>
+              <a href="../PC_Components/index.html">PC Components</a>
+            </div>
+      </div> 
+      <a href="../Shopping_Cart/payment.html"><i class="fa-solid fa-cart-shopping fa-1x"></i> Shopping Cart (<span id="cart-counter" style="display: none;"></span>)</a>
+      <a href="../Reviews_Page/Reviews.html"><i class="fa-solid fa-comments fa-1x"></i> Reviews</a>
+      <a href="../Login_page/login.html"><i class="fa-solid fa-user-plus fa-1x"></i> Login</a>
+      <a href="../About US/about2.html"><i class="fa-solid fa-circle-info fa-1x"></i> About Us</a>
+    </div>    
+  </nav>
+</header>
+
+  <!----------------------------Main Content----------------------------->
+    <div>
+      <h1 class="main" title="welcome❤️">🔥 Special Offers 🔥</h1>
+    </div>
+
+    <div class="mouse">MOUSES</div>
+    <br>
+    <section class="product-container">
+      <div class="product">
+        <img src="images/Redragon-AXE-PRO-M814RGB-3-modes_01-removebg-preview.png" alt="mouse1" />
+        <h3 class="name">REDRAGON MOUSE</h3>
+        <p class="description">Redragon M814 AXE PRO RGB Tri-Mode 2.4G/USB-C/Bluetooth Rechargeable Gaming Mouse – 8,000 DPI (Black)</p>
+        <p class="price">1,770.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Meetion-M371-Backlit-Wired_01-removebg-preview.png"alt ="Mouse2" />
+        <h3 class="name">MEETION MOUSE</h3>
+        <p class="description">Meetion M371 Backlit Wired Rainbow Gaming Mouse</p>
+        <p class="price">600.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/MOUSE-FOREV-FV-185_02-removebg-preview.png" alt="Mouse3" />
+        <p class="description">Forev Fv-185 Wireless Mouse 1600Dpi - 2.4Ghz 10M Range</p>
+        <h3 class="name">FOREV MOUSE</h3>
+        <p class="price">750.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/MOUSE-GAMING-FANTECH-X7_02-removebg-preview.png" alt="Mouse4" />
+        <h3 class="name">FANTECH MOUSE</h3>
+        <p class="description">FANTECH X7 BLAST RGB GAMING MOUSE 4800 DPI</p>
+        <p class="price">960.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Meetion-M915-Backlight-Wired_01-removebg-preview.png" alt="Mouse5" />
+        <h3 class="name">MEETION MOUSE</h3>
+        <p class="description">Meetion M915 Backlight Wired Gaming Mouse</p>
+        <p class="price">840.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Logitech-MX-Anywhere-3_02-removebg-preview.png" alt="Mouse6" />
+        <h3 class="name">LOGITECH MOUSE</h3>
+        <p class="description">Logitech MX Anywhere 3S Compact Performance Mouse</p>
+        <p class="price">2,670.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+
+    </section>
+    <br>
+
+    <br>
+
+    <div class="mouse">KEYBOARDS</div>
+    <br>
+
+    <section class="product-container">
+      <div class="product">
+        <img src="images/FANTECH-ATOM96-MK890-RGB-Mechanical-Gaming-Keyboard_02-removebg-preview.png" alt="Keyboard1" />
+        <h3 class="name">FANTECH KEYBOARD</h3>
+        <p class="description">FANTECH ATOM96 MK890 RGB Mechanical Gaming Keyboard</p>
+        <p class="price">2,370.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Raoop-Vogue-R-K8788-Multimedia-Notebook-Keyboard_01-removebg-preview.png" alt="Keyboard2" />
+        <h3 class="name">GENERIC KEYBOARD</h3>
+        <p class="description">Raoop Vogue R-K8788 Multimedia Notebook Keyboard</p>
+        <p class="price">450.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/FOREV-FV-K98_01-removebg-preview.png" alt="Monitor" />
+        <h3 class="name">FOREV KEYBOARD</h3>
+        <p class="description">FOREV FV-K98 Gaming Mechanical Keyboard RGB Backlit 98 Keys Hotswap PBT Keycaps 3 modes Wired Keyboard</p>
+        <p class="price">2,040.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Meetion-MK005BT-60_-Blue-switch-Arabic_01-removebg-preview.png" alt="Keyboard3" />
+        <h3 class="name">MEETION KEYBOARD</h3>
+        <p class="description">Meetion MK005BT 60% Blue switch Arabic Dual Mode Bluetooth Mechanical Keyboard</p>
+        <p class="price">1,170.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/k530_01-removebg-preview.png" alt="Keyboard4" />
+        <h3 class="name">REDRAGON KEYBOARD</h3>
+        <p class="description">REDRAGON K530 Draconic Pro RGB 60% Gaming Wireless Mechanical Keyboard – Brown Switches (YELLOW, WHITE & GREY)</p>
+        <p class="price">2,100.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+    </section>  
+
+    <br>
+    <div class="mouse">SPEAKERS</div>
+    <br>
+      <section class="product-container">
+      <div class="product">
+        <img src="images/Logitech-Z607_04-removebg-preview.png" alt="Speaker1" />
+        <h3 class="name">LOGITECH SPEAKER</h3>
+        <p class="description">LOGITECH Z607 5.1 SURROUND SOUND SPEAKER SYSTEM Powerful Sound with Bluetooth</p>
+        <p class="price">3,300.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/A32_02-removebg-preview.png" alt="Speaker2" />
+        <h3 class="name">GENERIC SPEAKER</h3>
+        <p class="description">SPEAKER MODEL: A32 USB/AUX/LAP/PC</p>
+        <p class="price">900.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Forev-FV-206-RGB_01-removebg-preview.png" alt="Speaker3" />
+        <h3 class="name">FOREV SPEAKER</h3>
+        <p class="description">Forev FV-206 RGB Computer Gaming Speakers - 3W*2 RGB Lights Wired Stereo Mini - 3.5mm Jack + 2.0 USB Powered For Gaming/Movie/Music/PC/Laptop</p>
+        <p class="price">1,440.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Fantech-SONAR-GS202-SAKURA-Edition-Mobile-Gaming-_-Music-Speaker_03-removebg-preview.png" alt="Speaker4" />
+        <h3 class="name">FANTECH SPEAKER</h3>
+        <p class="description">Fantech SONAR GS202 SAKURA Edition Mobile Gaming & Music Speaker</p>
+        <p class="price">1,200.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Portable-Multi-Function-Bluetooth-Speaker-B86-with-TF-USB-FM-Aux-Atmosphere-Lamp_02-removebg-preview.png" alt="Speaker5" />
+        <h3 class="name">GENERIC SPEAKER</h3>
+        <p class="description">BKK Portable Multi Function Bluetooth Speaker B86 with TF USB FM Aux Atmosphere Lamp</p>
+        <p class="price">1,050.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/RAZER-NOMMO-CHROMA-2.0-EU_01-removebg-preview.png" alt="Speaker6" />
+        <h3 class="name">RAZER SPEAKER</h3>
+        <p class="description">Razer Nommo Chroma - 2.0 Gaming Speakers RGB Chroma (Custom Woven Glass Fibre 3-inch Drivers, Rear-Facing Bass Ports, Bass Knob with Automatic Gain Control) Black</p>
+        <p class="price">4,500.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Z207__02-removebg-preview.png" alt="Speaker7" />
+        <h3 class="name">LOGITECH SPEAKER</h3>
+        <p class="description">Logitech Z207 Bluetooth Speaker</p>
+        <p class="price">1,950.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Subwoofer-Speaker-2.1-Multimedia-Wired_-Touch-Control-For-Light_-3.5mm-Jack--USB-Powered-For-Laptop_-Desktop--A85_01-removebg-preview.png" alt="Speaker8" />
+        <h3 class="name">GENERIC SPEAKER</h3>
+        <p class="description">SPEAKER Generic A85 2.1 MULTIMEDIA USB/LED RGB/AUX / / LAP/PC</p>
+        <p class="price">1,440.00 EGP</p>        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+    </section>
+
+    <br>
+    <div class="mouse">HEADPHONES</div>
+    <br>
+        <section class="product-container">
+      <div class="product">
+        <img src="images/Meetion-HP003-3.5mm-Telephony-Headset_01-removebg-preview.png" alt="headphone1" />
+        <h3 class="name">MEETION HEADPHONE</h3>
+        <p class="description">Meetion HP003 3.5mm Telephony Headset</p>
+        <p class="price">750.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/MEETION-HP021-Stereo_01-removebg-preview.png" alt="headphone2" />
+        <h3 class="name">MEETION HEADPHONE</h3>
+        <p class="description">MEETION HP021 Stereo Wired Gaming Headset</p>
+        <p class="price">900.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/White__03-removebg-preview.png" alt="headphone3" />
+        <h3 class="name">REDRAGON HEADPHONE</h3>
+        <p class="description">Redragon H350 Pandora RGB Wired Gaming Headset, Dynamic RGB Backlight - Stereo Surround-Sound - 50MM Drivers - Detachable Microphone</p>
+        <p class="price">1,800.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+      <div class="product">
+        <img src="images/Kaira-HyperSpeed_02-removebg-preview.png" alt="headphone4" />
+        <h3 class="name">RAZER HEADPHONE</h3>
+        <p class="description">Razer Kaira HyperSpeed – Wireless Multi-Platform Gaming Headset for Xbox</p>
+        <p class="price">5,760.00 EGP</p>
+        <div class="cart">
+          <button onclick="addToCart(event)">Add to Cart</button>
+          <!-- <span id="cart-counter">0</span> Items in Cart -->
+        </div>
+      </div>
+    </section>
+
+    <!-- <footer class="foo">
+      &copy; 2025 Techno_Zone Store. All rights reserved.
+     <div>Edited by : Eng.Jana Shebl</div> 
+    </footer>  -->
+
+    
+
+
+<!----------------------Footer--------------------------->
+<footer>
+  <!----------Footer Curved Background------------------->
+  <div class="custom-shape-divider-top">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+  </div>
+  <!-----------Upper Footer Container----------->
+  <div class="footercontainer">
+      <!----------- 1st Part {Credit}-------->
+      <div id="footercredit" class="footer-content">
+          <h3>Credits</h3>
+          <ul class="credit">
+              <li><p>Eng • Mazen Emad</p></li>
+              <li><p>Eng • Ahmed Ali</p></li>
+              <li><p>Eng • Jana Shebl</p></li>
+              <li><p>Eng • Ahmed Zakaria</p></li>
+              <li><p>Eng • Kholoud Emad</p></li>
+              <li><p>Eng • Hasnaa Elsanosy</p></li>
+              <li><p>Eng • Eyad Ahmed</p></li>
+              <li><p>Eng • Haneen Khaled</p></li>
+              <li><p>Eng • Ahmed Abdalazim</p></li>
+          </ul>
+      </div>
+      <!----------- 2nd Part {Quick Links}-------->
+      <div id="footerlinks" class="footer-content">
+          <h3>Quick Links</h3>
+          <ul class="quicklinks">
+            <li><a href="../Home Page/Home Page.html">Home</a></li>
+            <li><a href="../Reviews_Page/Reviews.html">Reviews</a></li>
+            <li><a href="../About US/about2.html">About US</a></li>
+            <li><a href="../Home Page/Home Page.html">Categories</a></li>
+            <li><a href="../Shopping_Cart/payment.html">Shopping Cart</a></li>
+          </ul>
+      </div>
+      <!----------- 3nd Part {Contact Us}-------->
+      <div id="footercontact" class="footer-content">
+          <h3>Contact Us</h3>
+          <p>Email:techno_zone@exp.com</p>
+          <p>Phone: +02 01111111111</p>
+      </div>
+      <!----------- 4th Part {Social Media}-------->
+      <div id="footerfollow" class="footer-content">
+          <img id="footerlogo" src="Final Logo.svg" alt="Logo">
+          <h3>Follow Us</h3>
+          <ul class="social-icons">
+              <li><a href="https://www.linkedin.com/in/mazen-emad-abdelsattar-96118b342?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin fa-2x fa-fade"></i></a></li>
+              <li class="github"><a  href="https://github.com/MazenEmadAbdelsattar" target="_blank"><i class="fa-brands fa-github fa-2x fa-fade"></i></a></li>
+              <li><a href="https://www.facebook.com/profile.php?id=100052692786291" target="_blank"><i class="fa-brands fa-facebook fa-2x fa-fade"></i></a></li>
+              <li class="instagram"><a href="https://www.instagram.com/iammazenemad" target="_blank"><i class="fa-brands fa-instagram fa-2x fa-fade" ></i></a></li>
+              <li><a href="#" target="_blank"><i class="fa-brands fa-twitter fa-2x fa-fade" ></i></a></li>
+          </ul>
+      </div>
+  </div>
+  <!--------------Lower Footer Container----------->
+  <div class="bottom-bar">
+      <p>&copy; 2025 Techno_Zone &trade;     . All Rights Reserved   &reg; </p>
+      <p>built by Eng • Jana Shebl</p>
+  </div>
+</footer>
+
+
+
+
+
+</body>
+</html>
+
