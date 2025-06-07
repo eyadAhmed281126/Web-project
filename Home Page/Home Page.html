@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="Home Page Styling.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <script src="https://kit.fontawesome.com/25e26d869f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="Techno-Zone Icon" href="Techno_Zone ICON.svg">
+    <title>Techno-Zone | Home</title>
+    <!---Java Script--->
+    <script src="Home Page.js" defer></script>
+    <style></style>
+</head>
+                    <!-- CD Rotation and Website Hock -->
+<body>
+    <div class="hero-box">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Techno-Zone</h1>
+                <p>Here you will find a technology world, Let us Show you!
+                    <br>
+                    Welcome to the ultimate Tech Web Store, where cutting-edge gadgets meet unbeatable prices! 
+                    <br>
+                    Discover the latest smartphones, sleek laptops, and smart home devices—all in one place. 
+                    <br>
+                    Enjoy lightning-fast shipping, secure payments, and expert customer support.
+                    <br>
+                    Whether you're a tech enthusiast or a casual shopper, we've got everything to upgrade your digital life. 
+                    <br>
+                    Shop now and experience the future of technology today!
+                </p>
+            </div>
+                    <!-- For CD Rotation -->
+            <div class="hero-image">
+                <img src="../Home Page/Techno_Zone_CD.svg" alt="CD Image" id="main">
+                <script>
+                    let angle = 0;
+                    const img = document.querySelector("#main"); 
+                    img.style.transition = "transform 0.1s linear";
+                    function rotate() {
+                        angle += 0.175;
+                        img.style.transform = `rotate(${angle}deg)`; 
+                        requestAnimationFrame(rotate); 
+                    }
+                    
+                    rotate();
+                </script>
+            </div>
+        </div>
+            <div class="view-products-container">
+                <button id="View" onclick="scrollToProducts()">View Our Products</button>
+                    <script>
+                        function scrollToProducts() {
+                            var productsSection = document.getElementById('StartOfItems');
+                            productsSection.scrollIntoView({ behavior: 'smooth' }); 
+                        }
+                    </script>                    
+            </div>
+    </div>
+   
+
+<!----------------------------Navigation Bar------------------------->
+<header>
+    <nav>
+      <!---------------Techno_Zone Logo------------------->
+      <img class="LOGO" src="Final Logo.svg" alt="Techno_Zone Logo">
+      <!--------Navigation Bar Links-------->
+      <div class="Navlinks">    
+          <a href="../Home Page/Home Page.html"><i class="fa-solid fa-house fa-1x"></i> Home</a>
+          <!-----------Dropdown Content-------->
+          <div    class="dropdown">
+              <!-----------Categories btn-------->
+              <button class="dropbtn"><i class="fa-solid fa-list fa-1x"></i> Categories <i class="fa fa-caret-down"></i></button>          
+              <!-----------Dropdown Menu-------->
+              <div class="dropdown-content">
+                  <a href="../Laptop/laptop.html">Laptops</a>
+                  <a href="../Consoles/consoles.html">Consoles</a>
+                  <a href="../PC_Cases/Pc_Cases.html">PC Cases</a>
+                  <a href="../PC-Monitors/PC_Monitors.html">PC Monitors</a>
+                  <a href="../PC_Accessories/projet.html">PC Accessories</a>
+                  <a href="../PC_Components/index.html">PC Components</a>
+                </div>
+            </div> 
+            <a href="../Shopping_Cart/payment.html"><i class="fa-solid fa-cart-shopping fa-1x"></i> Shopping Cart ( <span id="cart-count" style="display: none;"></span> )</a>
+            <a href="../Reviews_Page/Reviews.html"><i class="fa-solid fa-comments fa-1x"></i> Reviews</a>
+            <a href="../Login_page/login.html"><i class="fa-solid fa-user-plus fa-1x"></i> Login</a>
+          <a href="../About US/about2.html"><i class="fa-solid fa-circle-info fa-1x"></i> About Us</a>
+      </div>    
+    </nav>
+</header>
+  
+<div class="slideshow">
+
+    <img class="slide" src="images/30serise.jpg" alt="dfsf" >
+    <img class="slide" src="images/rog-swift-oled-pg27aqdm-scenario_vkkn.1280.webp" alt="dfsf" >
+    <img class="slide" src="images/bg-07-m.jpg" alt="Invincible Wallpaper">
+    <img class="slide" src="images/E2987NFVIAUniv_.jpg" alt="ffsdaf">
+    <img class="slide" src="images/1671821496_asusrogstrixg15g512featured.jpg" alt="Blue Comic Poster">
+    <img class="slide" src="images/img-empresa.jpg" alt="Comic Blue Cloud">
+    <img class="slide" src="images/ps5thumb-1696954542971.jpg" alt="Invincible Wallpaper">
+    <img class="slide" src="images/photo-1578303512597-81e6cc155b3e.avif" alt="Invincible Wallpaper">
+    <img class="slide" src="images/IbANElpk.webp" alt="Invincible Wallpaper">
+    
+</div>
+
+<div class="dots"></div>
+<script>
+    // Get elements
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelector('.dots');
+
+// Create dots
+slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.onclick = () => showSlide(i);
+    dots.appendChild(dot);
+});
+
+// Show first slide and activate first dot
+let current = 0;
+slides[current].style.display = 'block';
+dots.children[current].classList.add('active');
+
+// Show selected slide
+function showSlide(n) {
+    // Hide all slides and remove active dots
+    slides.forEach(slide => slide.style.display = 'none');
+    Array.from(dots.children).forEach(dot => dot.classList.remove('active'));
+    
+    // Show selected slide and activate its dot
+    slides[n].style.display = 'block';
+    dots.children[n].classList.add('active');
+    current = n;
+}
+
+// Auto-slide every 7 seconds
+setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+}, 5000);
+</script>
+          <!-- The Begining of the Website's body         -->
+    <div class="container">
+
+        <h2 id="StartOfItems">Lets see our products</h2>
+        <!-- Our Catigories  -->
+        <div class="products">
+            <div class="product">
+                <img src="images/laptopimg.png" alt="">
+                <h3>Lets discover our laptops world!</h3>    
+                <form action="../Laptop/laptop.html" method="get">                
+                    <button id="Wonder">Laptops</button>
+                </form>          
+            </div>
+
+            <div class="product">
+                <img src="images/Case 02.webp" alt="">
+                <h3>Discover epic Cases adventures!</h3> 
+                <form action="../PC_Cases/Pc_Cases.html" method="get">                
+                    <button id="Wonder">Cases</button>
+                </form>          
+            </div>
+
+            <div class="product">
+                <img src="images/monitor17.png" alt="">
+                <h3>Unlock The Monitors realm!</h3> 
+                <form action="../PC-Monitors/PC_Monitors.html" method="get">                
+                    <button id="Wonder">Monitors</button>
+                </form>          
+            </div>
+
+            <div class="product">  
+                <img src="images/accesories.png" alt="">
+                <h3>Step into Accesories glory!</h3> 
+                <form action="../PC_Accessories/projet.html" method="get">                
+                    <button id="Wonder">Accesories</button>
+                </form>          
+            </div>
+
+            <div class="product">
+                <img src="images/ps5spider.png" alt="">
+                <h3>Explore our Console universe!</h3> 
+                <form action="../Consoles/consoles.html" method="get">                
+                    <button id="Wonder">Consoles</button>
+                </form>          
+            </div>
+
+            <div class="product">
+                <img src="images/component1.webp" alt="">
+                <h3>Dive into innovation today!</h3> 
+                <form action="../PC_Components/index.html" method="get">                
+                    <button id="Wonder">Components</button>
+                </form>          
+            </div>
+
+            <div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+        <!-- For Button Sound Effect  -->
+    <audio id="clickSound" src="Sound-Effects/transition-base-121422-[AudioTrimmer.com].mp3" preload="auto"></audio>
+    <script>
+        function playClickSound() {
+            var sound = document.getElementById('clickSound');
+            sound.currentTime = 0; 
+            sound.volume = 0.8;
+            sound.play().catch(e => console.log(" ", e));
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('button').forEach(btn => {
+                btn.addEventListener('click', playClickSound);
+            });
+        });
+        </script>
+        
+</body>
+<hr>
+<!----------------------Footer--------------------------->
+<footer>
+    <!----------Footer Curved Background------------------->
+    <div class="custom-shape-divider-top">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    <!-----------Upper Footer Container----------->
+    <div class="footercontainer">
+        <!----------- 1st Part {Credit}-------->
+        <div id="footercredit" class="footer-content">
+            <h3>Credits</h3>
+            <ul class="credit">
+                <li><p>Eng • Mazen Emad</p></li>
+                <li><p>Eng • Ahmed Ali</p></li>
+                <li><p>Eng • Jana Shebl</p></li>
+                <li><p>Eng • Ahmed Zakaria</p></li>
+                <li><p>Eng • Kholoud Emad</p></li>
+                <li><p>Eng • Hasnaa Elsanosy</p></li>
+                <li><p>Eng • Eyad Ahmed</p></li>
+                <li><p>Eng • Haneen Khaled</p></li>
+                <li><p>Eng • Ahmed Abdalazim</p></li>
+            </ul>
+        </div>
+        <!----------- 2nd Part {Quick Links}-------->
+        <div id="footerlinks" class="footer-content">
+            <h3>Quick Links</h3>
+            <ul class="quicklinks">
+                <li><a href="../Home Page/Home Page.html">Home</a></li>
+                <li><a href="../Reviews_Page/Reviews.html">Reviews</a></li>
+                <li><a href="../About US/about2.html">About US</a></li>
+                <li><a href="../Home Page/Home Page.html">Categories</a></li>
+                <li><a href="../Shopping_Cart/payment.html">Shopping Cart</a></li>
+            </ul>
+        </div>
+        <!----------- 3nd Part {Contact Us}-------->
+        <div id="footercontact" class="footer-content">
+            <h3>Contact Us</h3>
+            <p>Email:techno_zone@exp.com</p>
+            <p>Phone: +02 01111111111</p>
+        </div>
+        <!----------- 4th Part {Social Media}-------->
+        <div id="footerfollow" class="footer-content">
+            <img id="footerlogo" src="Final Logo.svg" alt="Logo">
+            <h3>Follow Us</h3>
+            <ul class="social-icons">
+                <li><a href="https://www.linkedin.com/in/mazen-emad-abdelsattar-96118b342?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin fa-2x fa-fade"></i></a></li>
+                <li class="github"><a  href="https://github.com/MazenEmadAbdelsattar" target="_blank"><i class="fa-brands fa-github fa-2x fa-fade"></i></a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100052692786291" target="_blank"><i class="fa-brands fa-facebook fa-2x fa-fade"></i></a></li>
+                <li class="instagram"><a href="https://www.instagram.com/iammazenemad" target="_blank"><i class="fa-brands fa-instagram fa-2x fa-fade" ></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa-brands fa-twitter fa-2x fa-fade" ></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <!--------------Lower Footer Container----------->
+    <div class="bottom-bar">
+        <p>&copy; 2025 Techno_Zone &trade;     . All Rights Reserved   &reg; </p>
+        <p>built by Eng • Ahmed Zakaria</p>
+    </div>
+</footer>
+
+  </html>
